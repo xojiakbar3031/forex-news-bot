@@ -1,0 +1,19 @@
+# Render.com uchun avtomatik joylashtirish sozlamasi.
+# "Web Service" turi ishlatilmoqda, chunki Render'ning bepul tarifi faqat shu turda mavjud.
+# Bepul tarif 15 daqiqa harakatsizlikdan keyin "uxlab qoladi" — shuning uchun tashqi
+# "uyg'otuvchi xizmat" (masalan UptimeRobot, bepul) shu servisga har 5 daqiqada
+# so'rov yuborib turishi kerak (README.md, 3-QISM'ga qarang).
+
+services:
+  - type: web
+    name: forex-news-bot
+    env: python
+    plan: free
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python main.py"
+    healthCheckPath: /
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
+      - key: CHANNEL_ID
+        sync: false
